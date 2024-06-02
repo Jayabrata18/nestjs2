@@ -24,6 +24,9 @@ export class UserService {
   findAllUser(): Promise<User[]> {
     return this.userRepository.find();
   }
+  findByEmail(email: string): Promise<User> {
+    return this.userRepository.findOne({ where: { email } });
+  }
   viewUser(id: number): Promise<User> {
     return this.userRepository.findOneBy({ id });
   }

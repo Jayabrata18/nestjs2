@@ -4,6 +4,12 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entity/user.entity';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
+import { JwtService } from '@nestjs/jwt';
+import { ProfileModule } from './profile/profile.module';
+import { localStrategy } from './auth/local.strategy';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -19,6 +25,10 @@ import { User } from './user/entity/user.entity';
     }),
 
     UserModule,
+
+    AuthModule,
+
+    ProfileModule,
   ],
   controllers: [AppController],
   providers: [AppService],
